@@ -1,10 +1,11 @@
-﻿using ClubManagementAPI.Models;
+﻿using ClubManagementAPI.Helpers.Enum;
+using ClubManagementAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClubManagementAPI.Data
+namespace ClubManagementAPI.Interfaces
 {
     public interface IClubRepsitory
     {
@@ -14,5 +15,7 @@ namespace ClubManagementAPI.Data
 
         Task<bool> SaveAll();
         Task<User> GetUser(int id);
+
+        
     }
 }

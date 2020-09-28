@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClubManagementAPI.Data
+namespace ClubManagementAPI.Interfaces
 {
     public interface IAuthRepository
     {

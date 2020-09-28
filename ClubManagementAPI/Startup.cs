@@ -20,8 +20,7 @@ using ClubManagementAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using AutoMapper;
-
-
+using ClubManagementAPI.Interfaces;
 
 namespace ClubManagementAPI
 {
@@ -98,6 +97,7 @@ namespace ClubManagementAPI
             services.AddTransient<Seed>();
             //services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IClubRepsitory, ClubRepsitory>();
+            services.AddScoped<ILookUpTypeRepsitory, LookUpTypeRepsitory>();
 
            
         }

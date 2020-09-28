@@ -1,4 +1,5 @@
-﻿using ClubManagementAPI.Models;
+﻿using ClubManagementAPI.Interfaces;
+using ClubManagementAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

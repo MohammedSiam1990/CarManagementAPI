@@ -1,4 +1,5 @@
 ﻿using ClubManagementAPI.Models;
+using ClubManagementAPI.Models.LookUP;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,9 @@ namespace ClubManagementAPI.Data
 
         }
         //public DbSet<User> Users { set; get; }
+        public DbSet<TypeOfCar> TypeOfCars { set; get; }
+
+        public DbSet<Nationality> Nationalities { set; get; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

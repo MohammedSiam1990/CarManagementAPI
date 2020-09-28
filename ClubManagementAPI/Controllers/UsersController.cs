@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ClubManagementAPI.Data;
 using ClubManagementAPI.Dto;
+using ClubManagementAPI.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
