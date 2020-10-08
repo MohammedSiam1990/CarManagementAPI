@@ -18,17 +18,24 @@ namespace ClubManagementAPI.Data
             _context = context;
         }
 
-        public async Task<List<Nationality>> GetNationalities(LookUpType lookUpType)
+        public async Task<List<Nationality>> GetNationalities()
         {
             var list = await _context.Nationalities.ToListAsync();
             return list;
         }
-       
-
-        public async Task<List<TypeOfCar>> GetTypeOfCar(LookUpType lookUpType)
+        public async Task<List<TypeOfCar>> GetTypeOfCar()
         {
             var list = await _context.TypeOfCars.ToListAsync();
             return list;
+        }
+
+        public async Task<Dictionary<string, IEnumerable<dynamic>>> GetLookUps()
+        {
+            Dictionary<string, IEnumerable<dynamic>> lookup = new Dictionary<string, IEnumerable<dynamic>>();
+            lookup.Add(LookUpType.TypeOfCar.ToString(), await _context.TypeOfCars.ToListAsync());
+            lookup.Add(LookUpType.Nationality.ToString(), await _context.Nationalities.ToListAsync());
+            //var list = await _context.TypeOfCars.ToListAsync();
+            return lookup;
         }
     }
 }

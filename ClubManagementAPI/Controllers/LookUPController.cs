@@ -5,6 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using ClubManagementAPI.Dto;
+using ClubManagementAPI.Dto.Query;
+using ClubManagementAPI.Dto.ReturnDto;
 using ClubManagementAPI.Helpers.Enum;
 using ClubManagementAPI.Interfaces;
 using ClubManagementAPI.Models.LookUP;
@@ -13,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ClubManagementAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/{userId}")]
     [ApiController]
     public class LookUPController : ControllerBase
     {
@@ -26,28 +28,30 @@ namespace ClubManagementAPI.Controllers
             _repo = repo;
         }
 
-        [HttpPost("getLookUP")]
-        public async Task<IActionResult> GetLookUP(int userId, LookUPDto lookUPDto)
+        [HttpGet("getLookUP")]
+        public async Task<IActionResult> GetLookUP(int userId)
         {
-            //if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //    return Unauthorized();
-            var lookup = new List<TypeOfCar>();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            LookUpsReturn lookUpsReturn = new LookUpsReturn();
+            //var lookup = new { };
+            //or
+            var lookups = (dynamic)null;
+            lookUpsReturn.LookUps = await _repo.GetLookUps();
+            lookups = lookUpsReturn.LookUps;
             //messageParams.userId = userId;
-            switch (lookUPDto.LookUpType)
-            {
-                case LookUpType.TypeOfCar:
-                    lookup = await _repo.GetTypeOfCar(lookUPDto.LookUpType);
-                    break;
-            }
+            //switch (lookUpType.LookUpType)
+            //{
+            //    case LookUpType.TypeOfCar:
+            //        lookup = await _repo.GetTypeOfCar();
+            //        break;
+            //    case LookUpType.Nationality:
+            //        lookup = await _repo.GetNationalities();
+            //        break;
+            //}
+            return Ok(lookUpsReturn);
 
 
-            //var messageFromRepo = await _repo.GetTypeOfCar(lookUPDto.LookUpType);
-
-            //var messages = _mapper.Map<IEnumerable<MessageToReturnDto>>(messageFromRepo);
-
-            //Response.AddPagination(messageFromRepo.CurrentPage, messageFromRepo.PageSize, messageFromRepo.TotalCount, messageFromRepo.TotalPages);
-
-            return Ok(lookup);
 
 
         }

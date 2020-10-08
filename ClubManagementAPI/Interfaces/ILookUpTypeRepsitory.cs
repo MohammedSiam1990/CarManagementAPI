@@ -9,8 +9,11 @@ namespace ClubManagementAPI.Interfaces
 {
     public interface ILookUpTypeRepsitory
     {
-        Task<List<TypeOfCar>> GetTypeOfCar(LookUpType lookUpType);
+        Task<List<TypeOfCar>> GetTypeOfCar();
 
-        Task<List<Nationality>> GetNationalities(LookUpType lookUpType);
+        Task<List<Nationality>> GetNationalities();
+
+        //dynamic or object
+        Task<Dictionary<string, IEnumerable<dynamic>>> GetLookUps();
     }
 }

@@ -25,5 +25,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\QueryDto\" />
+  </ItemGroup>
+
 
 </Project>
