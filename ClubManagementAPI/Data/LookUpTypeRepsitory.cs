@@ -37,5 +37,26 @@ namespace ClubManagementAPI.Data
             //var list = await _context.TypeOfCars.ToListAsync();
             return lookup;
         }
+
+
+        //public async Task<List<CarModel>> GetCarModel(int CarTypeId)
+        //{
+        //    var list = await _context.CarModels.Where(id => id.CarTypeID == CarTypeId).ToListAsync();
+        //    return list();
+        //}
+
+        public async Task<IEnumerable<dynamic>> GetLookUpsCascading(int IDType, int lookUpType)
+        {
+            var lookup = (dynamic)null;
+            switch (IDType)
+            {
+                case (int)LookUpType.CarModel:
+                    lookup = await _context.CarModels.Where(id => id.CarTypeID == IDType).ToListAsync();
+                    break;
+
+            }
+            
+            return (dynamic)lookup;
+        }
     }
 }

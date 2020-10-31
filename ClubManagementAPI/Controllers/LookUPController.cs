@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using ClubManagementAPI.Dto;
-using ClubManagementAPI.Dto.Query;
+
 using ClubManagementAPI.Dto.ReturnDto;
 using ClubManagementAPI.Helpers.Enum;
 using ClubManagementAPI.Interfaces;
@@ -50,11 +50,21 @@ namespace ClubManagementAPI.Controllers
             //        break;
             //}
             return Ok(lookUpsReturn);
-
-
-
-
         }
+
+        [HttpGet]
+        [Route("{Id}/{lookUpType}/GetLookUPCascading")]
+        public async Task<IActionResult> GetLookUPCascading(int userId, int Id, int lookUpType)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            var lookup = (dynamic)null;
+
+            lookup = await _repo.GetLookUpsCascading(Id, lookUpType);
+            return Ok(lookup);
+        }
+
+
 
 
     }

@@ -9,6 +9,7 @@ namespace ClubManagementAPI.Helpers.Enum
     {
         TypeOfCar,
         Nationality,
+        CarModel,
        
     }
 }

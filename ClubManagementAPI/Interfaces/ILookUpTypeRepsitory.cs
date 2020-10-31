@@ -13,6 +13,8 @@ namespace ClubManagementAPI.Interfaces
 
         Task<List<Nationality>> GetNationalities();
 
+        Task<IEnumerable<dynamic>> GetLookUpsCascading(int id, int lookUpType);
+
         //dynamic or object
         Task<Dictionary<string, IEnumerable<dynamic>>> GetLookUps();
     }

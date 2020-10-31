@@ -1,0 +1,21 @@
+http://localhost:50251/api/auth/login
+{
+"username": "muath",
+	"password": "password"
+}
+
+///////////////////////////////////////////////
+
+http://localhost:50251/api/auth/register
+{
+	"username": "bob",
+	"password": "password"
+}
+
+////////////////////////////////////////////////
+
+http://localhost:50251/api/LookUP/3/getLookUP
+
+/////////////////////////////////////////////
+
+http://localhost:50251/api/admin/usersWithRoles

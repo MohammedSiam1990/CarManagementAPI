@@ -8,5 +8,7 @@ namespace ClubManagementAPI.Dto.ReturnDto
     public class LookUpsReturn
     {
         public Dictionary<string, IEnumerable<object>> LookUps { get; set; }
+
+        public List<dynamic> LookUpsCascading { get; set; }
     }
 }

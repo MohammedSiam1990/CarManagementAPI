@@ -22,6 +22,8 @@ namespace ClubManagementAPI.Data
 
         public DbSet<Nationality> Nationalities { set; get; }
 
+        public DbSet<CarModel> CarModels { set; get; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -34,6 +36,7 @@ namespace ClubManagementAPI.Data
 
                 userRole.HasOne(ur => ur.User).WithMany(r => r.UserRoles).HasForeignKey(ur => ur.UserId).IsRequired();
             });
+           
         }
     }
 }
