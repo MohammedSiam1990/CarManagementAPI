@@ -7,5 +7,7 @@ namespace CarManagementAPI.Dto.QueryDto
 {
     public class DefinitionLookupDto
     {
+        public int OtherType { get; set; }
+        public string Description { get; set; }
     }
 }

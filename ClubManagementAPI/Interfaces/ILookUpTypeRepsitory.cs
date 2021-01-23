@@ -17,5 +17,7 @@ namespace ClubManagementAPI.Interfaces
 
         //dynamic or object
         Task<Dictionary<string, IEnumerable<dynamic>>> GetLookUps();
+
+        void AddNewItems(dynamic newitemlookup);
     }
 }

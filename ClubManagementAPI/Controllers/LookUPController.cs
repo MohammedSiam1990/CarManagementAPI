@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using CarManagementAPI.Dto.QueryDto;
 using ClubManagementAPI.Dto;
 
 using ClubManagementAPI.Dto.ReturnDto;
@@ -65,12 +66,16 @@ namespace ClubManagementAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetLookUP(int userId)
+        public async Task<IActionResult> AddItemslookUp(int userId, DefinitionLookupDto definitionLookup)
         {
 
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
 
+            throw new Exception("Creating the Car Card failed on save");
 
         }
+    }
 }
 

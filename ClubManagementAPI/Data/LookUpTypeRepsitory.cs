@@ -58,5 +58,10 @@ namespace ClubManagementAPI.Data
             
             return (dynamic)lookup;
         }
+
+        public void AddNewItems(dynamic newitemlookup)
+        {
+            _context.CarCards.Add(newitemlookup);
+        }
     }
 }
