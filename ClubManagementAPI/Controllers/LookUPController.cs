@@ -64,9 +64,13 @@ namespace ClubManagementAPI.Controllers
             return Ok(lookup);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GetLookUP(int userId)
+        {
 
 
 
-    }
+
+        }
 }
 
