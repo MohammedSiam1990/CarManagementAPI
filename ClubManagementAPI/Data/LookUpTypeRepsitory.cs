@@ -1,4 +1,5 @@
-﻿using ClubManagementAPI.Helpers.Enum;
+﻿using CarManagementAPI.Dto.QueryDto;
+using ClubManagementAPI.Helpers.Enum;
 using ClubManagementAPI.Interfaces;
 using ClubManagementAPI.Models.LookUP;
 using Microsoft.EntityFrameworkCore;
@@ -59,9 +60,38 @@ namespace ClubManagementAPI.Data
             return (dynamic)lookup;
         }
 
-        public void AddNewItems(dynamic newitemlookup)
+        public async Task<bool> AddNewItems(DefinitionLookupDto newitemlookup)
         {
-            _context.CarCards.Add(newitemlookup);
+            switch (newitemlookup.lookUpType)
+            {
+                case (int)LookUpType.CarModel:
+                    if (await _context.CarModels.AnyAsync(x => x.ModelName == newitemlookup.Description) || await _context.CarModels.AnyAsync(x => x.CarTypeID != newitemlookup.OtherType))
+                        return true;
+                    var carModel = new CarModel()
+                    {
+                        CarTypeID = newitemlookup.OtherType,
+                        ModelName = newitemlookup.Description
+                    };
+                    await _context.CarModels.AddAsync(carModel);
+                    break;
+
+                 case (int)LookUpType.Nationality:
+                    if (await _context.Nationalities.AnyAsync(x => x.NationalityName == newitemlookup.Description))
+                        return true;
+                    var nationality = new Nationality()
+                    {
+                        NationalityName = newitemlookup.Description
+                    };
+                   await _context.Nationalities.AddAsync(nationality);
+                    break;
+            }
+            await _context.SaveChangesAsync();
+            return false;
+        }
+
+        public void Add<T>(T entity) where T : class
+        {
+            throw new NotImplementedException();
         }
     }
 }

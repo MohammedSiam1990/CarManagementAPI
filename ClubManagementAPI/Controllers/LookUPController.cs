@@ -65,16 +65,18 @@ namespace ClubManagementAPI.Controllers
             return Ok(lookup);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddItemslookUp(int userId, DefinitionLookupDto definitionLookup)
+        [HttpPost("AddItemslookUp")]
+        public async Task<IActionResult> AddItemslookUp(int userId, DefinitionLookupDto definitionLookupDto)
         {
 
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
+            if (await _repo.AddNewItems(definitionLookupDto))
+                return BadRequest("Item Already exists");
 
-            throw new Exception("Creating the Car Card failed on save");
 
+            return Ok();
         }
     }
 }

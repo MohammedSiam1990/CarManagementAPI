@@ -17,6 +17,7 @@ namespace ClubManagementAPI.Helpers
             CreateMap<User, UserForDetailedDto>();
             CreateMap<UserForRegisterDto, User>();
             CreateMap<CarCardCreationDto, CarCard>();
+            
         }
     }
 }
