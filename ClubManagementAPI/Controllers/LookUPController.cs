@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using CarManagementAPI.Dto.QueryDto;
 using ClubManagementAPI.Dto;
 
 using ClubManagementAPI.Dto.ReturnDto;
@@ -64,9 +65,19 @@ namespace ClubManagementAPI.Controllers
             return Ok(lookup);
         }
 
+        [HttpPost("AddItemslookUp")]
+        public async Task<IActionResult> AddItemslookUp(int userId, DefinitionLookupDto definitionLookupDto)
+        {
+
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            if (await _repo.AddNewItems(definitionLookupDto))
+                return BadRequest("Item Already exists");
 
 
-
+            return Ok();
+        }
     }
 }
 

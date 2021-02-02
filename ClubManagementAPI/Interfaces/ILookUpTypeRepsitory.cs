@@ -1,4 +1,5 @@
-﻿using ClubManagementAPI.Helpers.Enum;
+﻿using CarManagementAPI.Dto.QueryDto;
+using ClubManagementAPI.Helpers.Enum;
 using ClubManagementAPI.Models.LookUP;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,9 @@ namespace ClubManagementAPI.Interfaces
 
         //dynamic or object
         Task<Dictionary<string, IEnumerable<dynamic>>> GetLookUps();
+
+        Task<bool> AddNewItems(DefinitionLookupDto newitemlookup);
+
+        void Add<T>(T entity) where T : class;
     }
 }

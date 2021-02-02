@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ClubManagementAPI.Models;
 using ClubManagementAPI.Dto;
+using CarManagementAPI.Dto.QueryDto;
 
 namespace ClubManagementAPI.Helpers
 {
@@ -15,6 +16,8 @@ namespace ClubManagementAPI.Helpers
             CreateMap<User, UserForListDto>();
             CreateMap<User, UserForDetailedDto>();
             CreateMap<UserForRegisterDto, User>();
+            CreateMap<CarCardCreationDto, CarCard>();
+            
         }
     }
 }
