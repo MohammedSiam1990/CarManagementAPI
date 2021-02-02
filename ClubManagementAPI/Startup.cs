@@ -98,8 +98,11 @@ namespace ClubManagementAPI
             //services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IClubRepsitory, ClubRepsitory>();
             services.AddScoped<ILookUpTypeRepsitory, LookUpTypeRepsitory>();
+            services.AddScoped<ICarCardRepository, CarCardRepository>();
 
-           
+            
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -122,7 +125,8 @@ namespace ClubManagementAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
+                //endpoints.MapControllers();
             });
          
         }

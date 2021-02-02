@@ -24,6 +24,8 @@ namespace ClubManagementAPI.Data
 
         public DbSet<CarModel> CarModels { set; get; }
 
+        public DbSet<CarCard> CarCards { set; get; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
