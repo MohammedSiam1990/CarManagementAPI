@@ -2,16 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>CarManagementAPI</RootNamespace>
-    <AssemblyName>CarManagementAPI</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Migrations\20201110092045_CarCard.cs" />
-    <Compile Remove="Migrations\20201110092045_CarCard.Designer.cs" />
-    <Compile Remove="Migrations\20201117100823_CarCard.cs" />
-    <Compile Remove="Migrations\20201117100823_CarCard.Designer.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Data\userSeedData.json~RF1cb4285b.TMP" />
@@ -32,6 +23,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dto\QueryDto\" />
   </ItemGroup>
 
 

@@ -19,57 +19,6 @@ namespace ClubManagementAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ClubManagementAPI.Models.CarCard", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CarCarAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("CarModel")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CarModelName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CarNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExistingCars")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Nationality")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NationalityName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ScheduledCars")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StatusName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TypeCar")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TypeCarName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CarCards");
-                });
-
             modelBuilder.Entity("ClubManagementAPI.Models.LookUP.CarModel", b =>
                 {
                     b.Property<int>("ID")
