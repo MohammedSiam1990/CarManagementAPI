@@ -64,18 +64,17 @@ namespace ClubManagementAPI.Data
         {
             switch (newitemlookup.lookUpType)
             {
-                case (int)LookUpType.CarModel:
-                    if (await _context.CarModels.AnyAsync(x => x.ModelName == newitemlookup.Description) || await _context.CarModels.AnyAsync(x => x.CarTypeID != newitemlookup.OtherType))
+                case (int)LookUpType.TypeOfCar:
+                    if (await _context.Nationalities.AnyAsync(x => x.NationalityName == newitemlookup.Description))
                         return true;
-                    var carModel = new CarModel()
+                    var typeOfCar = new TypeOfCar()
                     {
-                        CarTypeID = newitemlookup.OtherType,
-                        ModelName = newitemlookup.Description
+                        CarName = newitemlookup.Description
                     };
-                    await _context.CarModels.AddAsync(carModel);
+                    await _context.TypeOfCars.AddAsync(typeOfCar);
                     break;
 
-                 case (int)LookUpType.Nationality:
+                case (int)LookUpType.Nationality:
                     if (await _context.Nationalities.AnyAsync(x => x.NationalityName == newitemlookup.Description))
                         return true;
                     var nationality = new Nationality()
@@ -83,6 +82,17 @@ namespace ClubManagementAPI.Data
                         NationalityName = newitemlookup.Description
                     };
                    await _context.Nationalities.AddAsync(nationality);
+                    break;
+
+                case (int)LookUpType.CarModel:
+                    if (await _context.CarModels.AnyAsync(x => x.ModelName == newitemlookup.Description) || await _context.CarModels.AnyAsync(x => x.CarTypeID == newitemlookup.OtherType))
+                        return true;
+                    var carModel = new CarModel()
+                    {
+                        CarTypeID = newitemlookup.OtherType,
+                        ModelName = newitemlookup.Description
+                    };
+                    await _context.CarModels.AddAsync(carModel);
                     break;
             }
             await _context.SaveChangesAsync();
