@@ -69,14 +69,11 @@ namespace ClubManagementAPI.Controllers
         [HttpPost("AddItemslookUp")]
         public async Task<IActionResult> AddItemslookUp(int userId, DefinitionLookupDto definitionLookupDto)
         {
-
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
             if (await _repo.AddNewItems(definitionLookupDto))
                 return BadRequest("Item Already exists");
-
-
             return Ok();
         }
 

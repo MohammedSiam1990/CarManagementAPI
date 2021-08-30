@@ -1,0 +1,7 @@
+http://blog.geveo.com/IntegratingRDLCReportsToNetCoreProjects 
+
+RDCL Reports
+
+https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftRdlcReportDesignerforVisualStudio-18001 
+
+Microsoft RDLC Report Designer

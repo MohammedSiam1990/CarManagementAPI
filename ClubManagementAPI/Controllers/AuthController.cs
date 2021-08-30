@@ -88,9 +88,6 @@ namespace ClubManagementAPI.Controllers
             }
 
             return BadRequest(result.Errors);
-
-
-
         }
 
         public async Task<string> GenerateJwtTokenAsync(User user)
