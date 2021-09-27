@@ -49,7 +49,7 @@ namespace ClubManagementAPI.Data
         public async Task<IEnumerable<dynamic>> GetLookUpsCascading(int IDType, int lookUpType)
         {
             var lookup = (dynamic)null;
-            switch (IDType)
+            switch (lookUpType)
             {
                 case (int)LookUpType.CarModel:
                     lookup = await _context.CarModels.Where(id => id.CarTypeID == IDType).ToListAsync();
@@ -65,7 +65,7 @@ namespace ClubManagementAPI.Data
             switch (newitemlookup.lookUpType)
             {
                 case (int)LookUpType.TypeOfCar:
-                    if (await _context.Nationalities.AnyAsync(x => x.NationalityName == newitemlookup.Description))
+                    if (await _context.TypeOfCars.AnyAsync(x => x.CarName == newitemlookup.Description))
                         return true;
                     var typeOfCar = new TypeOfCar()
                     {

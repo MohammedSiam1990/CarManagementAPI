@@ -36,8 +36,9 @@ namespace ClubManagementAPI
         // This method gets called by the runtime. Use this method to add services to the container.1
         public void ConfigureServices(IServiceCollection services)
         {
-
             var connection = "Server=(localdb)\\mssqllocaldb; Database=CarManagementApp; Trusted_Connection=True;";
+            //var connection = "Server=DESKTOP-1MT9AUB; user id=sa;password=123; Database=CarManagementApp; Trusted_Connection=True;";
+
             services.AddDbContext<DataContext>(x => x.UseSqlServer(connection));
             IdentityBuilder builder = services.AddIdentityCore<User>(opt =>
             {

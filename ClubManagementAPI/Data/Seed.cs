@@ -43,7 +43,7 @@ namespace ClubManagementAPI.Data
         {
             _userManager = userManager;
             _roleManager = roleManager;
-            
+
         }
 
         public void SeedUsers()
@@ -77,7 +77,7 @@ namespace ClubManagementAPI.Data
                 };
                 IdentityResult result = _userManager.CreateAsync(adminUser, "password123").Result;
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     var admin = _userManager.FindByNameAsync("Admin").Result;
                     _userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" }).Wait();
